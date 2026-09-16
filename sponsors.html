@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sponsors — Crisis Forty-Four Racing</title>
+<meta name="description" content="The sponsors behind Crisis Forty-Four Racing: Aftermarket Assassins, Tire Spine, Engine Ice, FP Racing, and GoPro.">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="assets/images/logo-stacked.png">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="header-logo-bg" aria-label="Crisis Forty-Four Racing &mdash; Home"><img src="assets/images/logo-long.png" alt=""></a>
+  <div class="nav-inner">
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="team.html">Meet the Team</a>
+      <a href="garage.html">Garage</a>
+      <a href="results.html">Race Results</a>
+      <a href="upcoming.html">Upcoming Races</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="sponsors.html" class="active">Sponsors</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero hero-plain">
+  <div class="wrap hero-content" style="text-align:left;">
+    <span class="kicker">Our Sponsors</span>
+    <h1 style="font-size:clamp(2rem,5vw,3.2rem);">The Believers</h1>
+    <p class="sub" style="margin-left:0;">Nobody here is paying us actual money &mdash; let's be clear about that. But these companies back us up with moral support, solid advice, and parts at a discount. Honestly, what more could we ask for? (Besides money. We'd take money.)</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sponsor-grid">
+
+      <div class="sponsor-card">
+        <div class="sponsor-card-head">
+          <h3>Aftermarket Assassins</h3>
+        </div>
+        <p>UTV performance parts &mdash; clutch kits and exhaust / lock-and-load kits.</p>
+        <a class="visit" href="https://aftermarketassassins.com" target="_blank" rel="noopener">aftermarketassassins.com &rarr;</a>
+      </div>
+
+      <div class="sponsor-card">
+        <div class="sponsor-card-head">
+          <h3>Tire Spine</h3>
+        </div>
+        <p>Run-flat tire insert systems for ATV / UTV / SxS.</p>
+        <a class="visit" href="https://tire-spine.com" target="_blank" rel="noopener">tire-spine.com &rarr;</a>
+      </div>
+
+      <div class="sponsor-card">
+        <div class="sponsor-card-head">
+          <h3>Engine Ice</h3>
+        </div>
+        <p>High-performance coolant for powersports.</p>
+        <a class="visit" href="https://engineice.com" target="_blank" rel="noopener">engineice.com &rarr;</a>
+      </div>
+
+      <div class="sponsor-card">
+        <div class="sponsor-card-head">
+          <h3>FP Racing</h3>
+        </div>
+        <p>Custom stainless brake line kits.</p>
+        <a class="visit" href="https://fp-racing.com" target="_blank" rel="noopener">fp-racing.com &rarr;</a>
+      </div>
+
+      <div class="sponsor-card">
+        <div class="sponsor-card-head">
+          <h3>GoPro</h3>
+        </div>
+        <p>Action cameras &mdash; documenting the chaos, one clip at a time.</p>
+        <a class="visit" href="https://gopro.com" target="_blank" rel="noopener">gopro.com &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="sponsor-cta">
+      <h3 style="margin-bottom:14px;">Interested in Sponsoring Us?</h3>
+      <p>We'll put your logo on a car that occasionally finishes races. Send us a note and we'll get back to you.</p>
+      <form id="sponsor-form" class="contact-form">
+        <input type="hidden" name="access_key" value="0f10bca9-06f0-4433-949d-eee74a3374bf">
+        <input type="hidden" name="subject" value="New sponsor inquiry — crisisfortyfour.com">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="message" rows="4" placeholder="Tell us a bit about your company and what you had in mind" required></textarea>
+        <button type="submit" class="btn">Send</button>
+        <p class="form-status" id="form-status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-logo"><img src="assets/images/logo-stacked.png" alt="Crisis Forty-Four Racing"></div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="team.html">Meet the Team</a>
+      <a href="garage.html">Garage</a>
+      <a href="results.html">Race Results</a>
+      <a href="upcoming.html">Upcoming Races</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="sponsors.html">Sponsors</a>
+    </div>
+    <div class="footer-fine">&copy; 2026 Crisis Forty-Four Racing. Breaking down more than winning since 2022.</div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('sponsor-form');
+  var status = document.getElementById('form-status');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.textContent = 'Sending…';
+    status.className = 'form-status';
+    var data = new FormData(form);
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: data
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (json) {
+        if (json.success) {
+          form.reset();
+          status.textContent = "Thanks — we'll be in touch soon.";
+          status.className = 'form-status success';
+        } else {
+          status.textContent = 'Something went wrong. Please try again in a moment.';
+          status.className = 'form-status error';
+        }
+      })
+      .catch(function () {
+        status.textContent = 'Something went wrong. Please try again in a moment.';
+        status.className = 'form-status error';
+      });
+  });
+})();
+</script>
+
+</body>
+</html>
